@@ -4,9 +4,9 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-    - name: printing content to file
+    - name: writing to file
       run: echo "123" > abc.txt
-    - name: accessing content from file
+    - name: fetching the content
       run: cat ./abc.txt
-    - name: installing nginx
-      run: sudo apt install nginx -y && systemctl status nginx
+    - name: checking status
+      run: nginx -v && systemctl status nginx
