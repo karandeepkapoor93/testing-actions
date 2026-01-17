@@ -10,5 +10,7 @@ jobs:
       run: cat ./abc.txt
     - name: accessing the directory
       run: ls -lrt
+    - name: checking out repository
+      uses: actions/checkout@v3
     - name: running the script
       run: sh ./testing.sh
