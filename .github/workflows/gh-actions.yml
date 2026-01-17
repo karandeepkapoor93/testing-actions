@@ -1,10 +1,10 @@
 name: karan-github-actions
-on: workflow_dispatcher
+on: workflow_dispatch
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-    - name: just printing
+    - name: just printing again
       run: echo "123"
-    - name: getting machine details
-      run: env && whoami && ls -lrt
+    - name: getting system info
+      run: pwd && ls -lrt && env && whoami
