@@ -9,4 +9,4 @@ jobs:
     - name: accessing content from file
       run: cat ./abc.txt
     - name: installing nginx
-      run: apt install nginx -y && systemctl status nginx
+      run: sudo apt install nginx -y && systemctl status nginx
