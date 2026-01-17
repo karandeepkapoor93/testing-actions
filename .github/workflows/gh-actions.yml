@@ -1,10 +1,10 @@
 name: karan-github-actions
-on: workflow_dispatch
+on: workflow_dispatcher
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-    - name: just testing the steps
-      run: echo "just testing"
-    - name: just testing again to be sure
-      run: whoami && pwd
+    - name: just printing
+      run: echo "123"
+    - name: getting machine details
+      run: env && whoami && ls -lrt
