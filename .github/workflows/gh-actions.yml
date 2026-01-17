@@ -1,0 +1,10 @@
+name: karan-github-actions
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: running shell command
+      run: echo "Yo Bois"
+    - name: printing again
+      run: echo "Oh yeah"
