@@ -4,7 +4,7 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-    - name: just printing again
-      run: echo "123"
-    - name: getting system info
-      run: pwd && ls -lrt && env && whoami
+    - name: testing
+      run: echo "123" > abc.txt
+    - name: accessing the file
+      run: cat ./abc.txt
