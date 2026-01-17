@@ -4,9 +4,11 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-    - name: writing to file
+    - name: creating file
       run: echo "123" > abc.txt
-    - name: fetching the content
+    - name: accessing the file
       run: cat ./abc.txt
-    - name: checking status
-      run: nginx -v && systemctl status nginx
+    - name: accessing the directory
+      run: ls -lrt
+    - name: running the script
+      run: sh ./testing.sh
