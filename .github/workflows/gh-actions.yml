@@ -1,25 +1,30 @@
 name: karan-github-actions
 on: workflow_dispatch
 env:
+  APP_ENV: prod
   LOG_LEVEL: debug
-  ENV_TEST: prod
 jobs:
   first-job:
     runs-on: ubuntu-latest
+    env:
+      APP_ENV: dev
+      LOG_LEVEL: info
     steps:
     - name: testing
       run: echo "123" > abc.txt
     - name: testing2
       run: cat ./abc.txt
-    - name: pulling the code
+    - name: Pulling code
       uses: actions/checkout@v3
-    - name: running the script
+    - name: Running script
       run: sh ./testing.sh
-    - name: using env variables
+    - name: using variables
+      run: echo ${{ env.APP_ENV }}
+    - name: using variable again
       run: echo ${{ env.LOG_LEVEL }}
   second-job:
-    needs: first-job
     runs-on: ubuntu-latest
+    needs: first-job
     steps:
-    - name: testing the sequential flow
-      run: echo "sequence is working"
+    - name: using variables
+      run: echo ${{ env.LOG_LEVEL }}
