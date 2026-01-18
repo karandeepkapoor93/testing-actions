@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "123" && whoami && pwd && nginx -v && nginx -t
+echo "123" && whoami && pwd && nginx -v
