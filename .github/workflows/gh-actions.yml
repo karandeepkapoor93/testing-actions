@@ -2,6 +2,7 @@ name: karan-github-actions
 on:
   pull_request:
     types: opened
+    branches: main
   workflow_dispatch:
 env:
   LOG_LEVEL: debug
