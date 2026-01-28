@@ -13,6 +13,8 @@ jobs:
     env:
       DB_PORT: 8080
     steps:
+    - name: just checking
+      run: pwd
     - name: creating file
       run: echo "123" > abc.txt
     - name: Reading file
