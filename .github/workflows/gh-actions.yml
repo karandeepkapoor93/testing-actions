@@ -12,10 +12,10 @@ jobs:
     environment: development
     runs-on: ubuntu-latest
     env:
-      DB_PORT: 8080
       DB_USERNAME: ${{ secrets.DB_USERNAME }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_NAME: ${{ vars.DB_NAME }}
+      DB_PORT: ${{ vars.DB_PORT }}
     steps:
     - name: just checking
       run: pwd
@@ -30,14 +30,14 @@ jobs:
     - name: printing the env variables
       if: ${{ env.LOG_LEVEL == 'debug' }}
       run: echo "${{ env.APPLICATION_ENV }}"
-    - name: printing job specific env variable
-      run: echo "${{ env.DB_PORT }}"
     - name: printing the environment related username
       run: echo "${{ env.DB_USERNAME }}"
     - name: printing the environment related password
       run: echo "${{ env.DB_PASSWORD }}"
     - name: printing the environment related variable
       run: echo "${{ env.DB_NAME }}"
+    - name: printing the env related variable
+      run: echo "${{ env.DB_PORT }}"
   second-job:
     runs-on: ubuntu-latest
     needs: first-job
