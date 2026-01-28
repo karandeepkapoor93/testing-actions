@@ -1,30 +1,35 @@
 name: karan-github-actions
-on: workflow_dispatch
+on:
+  pull_request:
+    types: opened
+  workflow_dispatch:
 env:
-  APP_ENV: prod
   LOG_LEVEL: debug
+  APPLICATION_ENV: prod
 jobs:
   first-job:
     runs-on: ubuntu-latest
     env:
-      APP_ENV: dev
-      LOG_LEVEL: info
+      DB_PORT: 8080
     steps:
-    - name: testing
+    - name: creating file
       run: echo "123" > abc.txt
-    - name: testing2
+    - name: Reading file
       run: cat ./abc.txt
-    - name: Pulling code
+    - name: pulling code
       uses: actions/checkout@v3
-    - name: Running script
+    - name: running Script
       run: sh ./testing.sh
-    - name: using variables
-      run: echo ${{ env.APP_ENV }}
-    - name: using variable again
-      run: echo ${{ env.LOG_LEVEL }}
+    - name: printing the env variables
+      if: ${{ env.LOG_LEVEL == 'debug' }}
+      run: echo "${{ env.APPLICATION_ENV }}"
+    - name: printing job specific env variable
+      run: echo "${{ env.DB_PORT }}"
   second-job:
     runs-on: ubuntu-latest
     needs: first-job
     steps:
-    - name: using variables
-      run: echo ${{ env.LOG_LEVEL }}
+    - name: printing the env variable in this step
+      env:
+        DB_PASSWORD: 123
+      run: echo "${{ env.DB_PASSWORD }}"
