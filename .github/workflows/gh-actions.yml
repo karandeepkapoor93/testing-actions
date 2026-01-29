@@ -4,6 +4,14 @@ on:
     types: opened
     branches: main
   workflow_dispatch:
+  push:
+    branches:
+    - abc
+    - 'karan/**'
+    paths-ignore:
+    - 'src/**'
+  schedule:
+  - cron: '0 0 * * 1'
 env:
   LOG_LEVEL: debug
   APPLICATION_ENV: prod
