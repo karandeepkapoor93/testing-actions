@@ -53,10 +53,10 @@ jobs:
       run: echo "${{ env.DB_NAME }}"
     - name: printing the env related variable
       run: echo "${{ env.DB_PORT }}"
-    - name: upload the artifact
+    - name: uploading the artifact
       uses: actions/upload-artifact@v4
       with:
-        name: testing-upload-artifact
+        name: karandeep
         path: ./abc.txt
         retention-days: 1
   second-job:
