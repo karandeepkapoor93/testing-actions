@@ -73,3 +73,8 @@ jobs:
         name: karandeep-artifact
     - name: testing the file
       run: cat ./abc.txt
+    - name: printing the token
+      continue-on-error: true
+      run: ecjo "${{ secrets.GITHUB_TOKEN }}"
+    - name: printing the github context details
+      run: echo "${{ github }}"
