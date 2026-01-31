@@ -88,4 +88,4 @@ jobs:
     - name: printing the token
       run: echo "${{ secrets.GITHUB_TOKEN }}"
     - name: Checking the things again
-      run: ${{ needs.first-job.outputs.output1 }}
+      run: echo "${{ needs.first-job.outputs.output1 }}"
