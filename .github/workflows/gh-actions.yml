@@ -36,6 +36,8 @@ jobs:
       run: echo "123" > abc.txt
     - name: Reading file
       run: cat ./abc.txt
+    - name: printing the path
+      run: pwd && ls -lrt
     - name: pulling code
       uses: actions/checkout@v3
     - name: running Script
