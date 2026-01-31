@@ -67,3 +67,9 @@ jobs:
       env:
         DB_PASSWORD: 123
       run: echo "${{ env.DB_PASSWORD }}"
+    - name: downloading artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: karandeep
+    - name: testing the file
+      run: cat ./abc.txt
