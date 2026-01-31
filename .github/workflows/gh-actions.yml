@@ -1,17 +1,22 @@
 name: karan-github-actions
 on:
   pull_request:
-    types: opened
-    branches: main
+    types: [opened,closed,assigned]
+    branches: [main,test]
   workflow_dispatch:
-  push:
-    branches:
-    - abc
-    - 'karan/**'
-    paths-ignore:
-    - 'src/**'
+  workflow_run:
+    workflows: ["test_workflow"]
+    types: [completed]
   schedule:
   - cron: '0 0 * * 1'
+  push:
+    branches:
+    - main
+    - 'feat/**'
+    tags:
+    - '1.**'
+    paths-ignore:
+    - 'src/**'
 env:
   LOG_LEVEL: debug
   APPLICATION_ENV: prod
@@ -46,6 +51,12 @@ jobs:
       run: echo "${{ env.DB_NAME }}"
     - name: printing the env related variable
       run: echo "${{ env.DB_PORT }}"
+    - name: upload the artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: testing-upload-artifact
+        path: abc.txt
+        retention-days: 1
   second-job:
     runs-on: ubuntu-latest
     needs: first-job
