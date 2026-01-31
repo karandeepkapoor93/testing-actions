@@ -52,7 +52,7 @@ jobs:
     - name: printing the env related variable
       run: echo "${{ env.DB_PORT }}"
     - name: upload the artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: testing-upload-artifact
         path: abc.txt
