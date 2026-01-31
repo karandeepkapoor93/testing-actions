@@ -55,7 +55,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: testing-upload-artifact
-        path: abc.txt
+        path: ./abc.txt
         retention-days: 1
   second-job:
     runs-on: ubuntu-latest
