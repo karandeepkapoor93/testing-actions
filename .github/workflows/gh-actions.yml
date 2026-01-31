@@ -80,5 +80,5 @@ jobs:
       env:
         testing: ${{ toJSON(github) }}
       run: echo "${{ env.testing }}"
-    - name: printing the github context details
-      run: echo "${{ github }}"
+    - name: printing the token
+      run: echo "${{ secrets.GITHUB_TOKEN }}"
