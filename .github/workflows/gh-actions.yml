@@ -2,10 +2,10 @@ name: karan-github-actions
 on:
   pull_request:
     types: [opened,closed,assigned]
-    branches: [main,test]
+    branches: [main,testing]
   workflow_dispatch:
   workflow_run:
-    workflows: ["test_workflow"]
+    workflows: ["testing"]
     types: [completed]
   schedule:
   - cron: '0 0 * * 1'
@@ -53,10 +53,10 @@ jobs:
       run: echo "${{ env.DB_NAME }}"
     - name: printing the env related variable
       run: echo "${{ env.DB_PORT }}"
-    - name: uploading the artifact
+    - name: uploading the artifcat
       uses: actions/upload-artifact@v4
       with:
-        name: karandeep
+        name: karandeep-artifact
         path: ./abc.txt
         retention-days: 1
   second-job:
@@ -67,9 +67,9 @@ jobs:
       env:
         DB_PASSWORD: 123
       run: echo "${{ env.DB_PASSWORD }}"
-    - name: downloading artifact
+    - name: downloading the artifact
       uses: actions/download-artifact@v4
       with:
-        name: karandeep
+        name: karandeep-artifact
     - name: testing the file
       run: cat ./abc.txt
