@@ -75,6 +75,10 @@ jobs:
       run: cat ./abc.txt
     - name: printing the token
       continue-on-error: true
-      run: ecjo "${{ secrets.GITHUB_TOKEN }}"
+      run: ecjo "abc"
+    - name: printing the whole context
+      env:
+        testing: ${{ toJSON(github) }}
+      run: echo "${{ env.testing }}"
     - name: printing the github context details
       run: echo "${{ github }}"
