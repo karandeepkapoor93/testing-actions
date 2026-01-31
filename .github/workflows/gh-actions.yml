@@ -32,14 +32,14 @@ jobs:
     steps:
     - name: just checking
       run: pwd
-    - name: creating file
-      run: echo "123" > abc.txt
-    - name: Reading file
-      run: cat ./abc.txt
     - name: printing the path
       run: pwd && ls -lrt
     - name: pulling code
       uses: actions/checkout@v3
+    - name: creating file
+      run: echo "123" > abc.txt
+    - name: Reading file
+      run: cat ./abc.txt
     - name: running Script
       run: sh ./testing.sh
     - name: printing the env variables
