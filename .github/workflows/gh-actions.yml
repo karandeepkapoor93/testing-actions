@@ -2,7 +2,7 @@ name: karan-github-actions
 on:
   pull_request:
     types: [opened,closed,assigned]
-    branches: [main,testing]
+    branches: [main]
   workflow_dispatch:
   workflow_run:
     workflows: ["testing"]
@@ -61,7 +61,7 @@ jobs:
         name: karandeep-artifact
         path: ./abc.txt
         retention-days: 1
-    - name: testing the things
+    - name: testing the things for output
       id: STEP1
       run: echo "abc=123" >> $GITHUB_OUTPUT
   second-job:
@@ -83,7 +83,7 @@ jobs:
       run: ecjo "abc"
     - name: printing the whole context
       env:
-        testing: ${{ toJSON(github) }}
+        testing: ${{ toJson(github) }}
       run: echo "${{ env.testing }}"
     - name: printing the token
       run: echo "${{ secrets.GITHUB_TOKEN }}"
