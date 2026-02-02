@@ -64,6 +64,14 @@ jobs:
     - name: testing the things for output
       id: STEP1
       run: echo "abc=123" >> $GITHUB_OUTPUT
+    - name: Testing the cache
+      uses: actions/cache@v4
+      id: npm-cache
+      with:
+        path: ~/.npm
+        key: testing-${{ hashFiles('**/package-lock.json') }}
+    - name: Install npm dependencies
+      run: npm ci
   second-job:
     runs-on: ubuntu-latest
     needs: first-job
@@ -89,3 +97,11 @@ jobs:
       run: echo "${{ secrets.GITHUB_TOKEN }}"
     - name: Checking the things again
       run: echo "${{ needs.first-job.outputs.output1 }}"
+    - name: Testing the cache
+      uses: actions/cache@v4
+      id: npm-cache
+      with:
+        path: ~/.npm
+        key: testing-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      run: npm ci
