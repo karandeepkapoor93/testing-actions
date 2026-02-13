@@ -117,5 +117,4 @@ jobs:
       with:
         username: 'karan'
         target_env: 'development'
-      secrets:
-        personal_access_token: ${{ secrets.DB_PASSWORD }}
+      secrets: inherit
