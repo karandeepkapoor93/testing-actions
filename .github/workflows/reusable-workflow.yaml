@@ -3,8 +3,11 @@ on:
   workflow_call:
     inputs:
       username:
-        description: 'Just Testing'
+        description: 'Testing'
+        required: true
         type: string
+    secrets:
+      personal_token_access:
         required: true
 jobs:
   testing-job:
@@ -12,3 +15,5 @@ jobs:
     steps:
     - name: Testing the reusable workflow
       run: echo "Hello from the reusable workflow. The value that was passed was ${{ inputs.username }}"
+    - name: checking if secret is being used or not
+      run: echo "${{ secrets.personal_access_token }}"
