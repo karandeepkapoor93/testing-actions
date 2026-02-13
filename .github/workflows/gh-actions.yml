@@ -113,6 +113,7 @@ jobs:
       run: npm ci
       continue-on-error: true
   third-job:
+      needs: second-job
       uses: ./.github/workflows/reusable-workflow.yaml
       with:
         username: 'karan'
