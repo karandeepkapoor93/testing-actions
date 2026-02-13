@@ -6,11 +6,16 @@ on:
         description: 'Testing'
         required: true
         type: string
+      target_env:
+        description: 'Checking the env'
+        required: true
+        type: string
     secrets:
       personal_token_access:
         required: true
 jobs:
   testing-job:
+    environment: ${{ inputs.target_env }}
     runs-on: ubuntu-latest
     steps:
     - name: Testing the reusable workflow
