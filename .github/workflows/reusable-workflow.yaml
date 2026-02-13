@@ -12,7 +12,7 @@ on:
         type: string
     secrets:
       personal_access_token:
-        required: false
+        required: true
 jobs:
   testing-job:
     environment: ${{ inputs.target_env }}
