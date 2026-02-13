@@ -64,12 +64,16 @@ jobs:
     - name: testing the things for output
       id: STEP1
       run: echo "abc=123" >> $GITHUB_OUTPUT
-    - name: Testing the cache
-      uses: actions/cache@v4
+    - name: Testing the Cache
       id: npm-cache
+      uses: actions/cache@v4
       with:
         path: ~/.npm
         key: testing-${{ hashFiles('**/package-lock.json') }}
+    - name: Installing the dependencies
+      if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
+      continue-on-error: true
+      run: npm install
     - name: Install npm dependencies
       run: npm ci
   second-job:
