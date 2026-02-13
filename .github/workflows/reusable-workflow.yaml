@@ -10,9 +10,9 @@ on:
         description: 'Checking the env'
         required: true
         type: string
-    secrets:
-      personal_token_access:
-        required: true
+    #secrets:
+      #personal_token_access:
+        #required: true
 jobs:
   testing-job:
     environment: ${{ inputs.target_env }}
@@ -21,4 +21,4 @@ jobs:
     - name: Testing the reusable workflow
       run: echo "Hello from the reusable workflow. The value that was passed was ${{ inputs.username }}"
     - name: checking if secret is being used or not
-      run: echo "${{ secrets.personal_access_token }}"
+      run: echo "${{ secrets.DB_PASSWORD }}"
