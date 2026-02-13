@@ -112,3 +112,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
       continue-on-error: true
+    - name: testing the reusable workflow
+      uses: ./.github/workflows/reusable-workflow.yaml
+      with:
+        username: 'karan'
