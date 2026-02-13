@@ -22,3 +22,5 @@ jobs:
       run: echo "Hello from the reusable workflow. The value that was passed was ${{ inputs.username }}"
     - name: checking if secret is being used or not
       run: echo "${{ secrets.DB_PASSWORD }}"
+    - name: Checking if variable is being used or not
+      run: echo "${{ vars.DB_PORT }}"
