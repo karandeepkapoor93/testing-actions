@@ -7,12 +7,12 @@ on:
         required: true
         type: string
       target_env:
-        description: 'Checking the env'
+        description: 'Testing'
         required: true
         type: string
-    #secrets:
-      #personal_token_access:
-        #required: true
+    secrets:
+      personal_access_token:
+        required: false
 jobs:
   testing-job:
     environment: ${{ inputs.target_env }}
